@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrontEnd</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* h1{
+            margin-bottom: 80px;
+            text-align: center;
+            font-size: 60px;
+
+        } */
+       #container{
+           width: 90%;
+           /* border: 1px solid; */
+           margin: auto;
+           display: grid;
+           grid-template-columns: repeat(4,1fr);
+           grid-template-rows: repeat(3,auto);
+           gap: 20px;
+       }
+       #container>div{
+           /* border: 1px solid; */
+           text-align: center;
+           border-radius: 15px;
+           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+       }
+       #content{
+           border-top-left-radius: 15px;
+           border-top-right-radius: 15px;
+           width: 100%;
+       }
+       #container p+img{
+           width: 130px;
+       }
+       #container h3{
+           font-size: 20px;
+           margin-top: 10px;
+           margin-bottom: 10px;
+       }
+       #container p{
+           color: grey;
+           font-weight: bold;
+       }
+       
+      
+    </style>
+</head>
+<body>
+    <!-- <h1>FrontEnd</h1> -->
+    <div id="navbar">
+        <div><a href="1.navbar.html">Navbar</a></div>
+        <div><a href="2.backend.html">BackEnd</a></div>
+        <div><a href="3.forntEnd.html">FrontEnd</a></div>
+    </div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var investorArr = JSON.parse(localStorage.getItem("investorsData")); 
+    var div = document.querySelector("#container");
+    investorArr.forEach(function(el){
+      var box = document.createElement("div");
+      var image = document.createElement("img");
+      image.setAttribute("id","content")
+      image.setAttribute("src", el.img);
+      var name = document.createElement("h3");
+      name.innerText=el.name;
+      var role = document.createElement("p")
+      role.innerText=el.role;
+      var logo = document.createElement("img");
+      logo.setAttribute("src", el.logo);
+       box.append(image,name,role,logo)
+      div.append(box)
+  })
+</script>

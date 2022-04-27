@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackEnd</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #investorform{
+            width: 90%;
+            margin: auto;
+            background-color: rgb(176, 110, 239);
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        input{
+            margin-left: 5px;
+            padding: 5px;
+            border: 2px solid blueviolet;
+            border-radius: 5px;
+        }
+        #btn{
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div><a href="1.navbar.html">Navbar</a></div>
+        <div><a href="2.backend.html">BackEnd</a></div>
+        <div><a href="3.forntEnd.html">FrontEnd</a></div>
+    </div>
+    <form id="investorform">
+        <input id="img" type="text" placeholder="Enter Image URL"/>
+        <input id="name" type="text" placeholder="Enter Name"/>
+        <input id="role" type="text" placeholder="Enter Role"/>
+        <input id="logo" type="text" placeholder="Enter Company Logo URL"/>
+        <input id="btn" type="submit"/>
+    </form>
+</body>
+</html>
+<script>
+    var form = document.querySelector("#investorform");
+    form.addEventListener("submit",investorFun);
+    var investorArr=JSON.parse(localStorage.getItem("investorsData"))||[];
+    function investorFun(){
+        event.preventDefault();
+
+        var investorObj={
+            img:form.img.value,
+            name:form.name.value,
+            role:form.role.value,
+            logo:form.logo.value,
+        }
+        // localStorage.setItem("InvestorDetails",)
+        investorArr.push(investorObj);
+        localStorage.setItem("investorsData",JSON.stringify(investorArr))
+        
+}
+</script>
