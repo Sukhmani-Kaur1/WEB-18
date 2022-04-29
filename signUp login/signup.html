@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>SignUp</title>
+    <style>
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 900px;
+      }
+      #logo {
+        text-align: center;
+        margin: 40px;
+      }
+      #logo img {
+        width: 190px;
+      }
+      #container {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 15px;
+        width: 370px;
+        margin: auto;
+        padding: 40px;
+      }
+      #container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 30px;
+      }
+      #container > div {
+        width: 310px;
+        margin: auto;
+      }
+      #container > div p {
+        margin-top: 30px;
+        margin-bottom: 8px;
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(9, 26, 66);
+      }
+      #container > div input {
+        padding: 16px 35px;
+        font-size: 20px;
+        text-align: start;
+        border-radius: 10px;
+        color: grey;
+        border: 2px solid grey;
+      }
+      #container #btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #container h5 {
+        font-weight: 200;
+        color: grey;
+        text-align: center;
+        margin-top: 20px;
+      }
+      #container h3 {
+        text-align: center;
+        margin-top: 40px;
+        color: grey;
+        font-weight: 400;
+      }
+      #btn #button {
+        padding: 16px 110px;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-top: 30px;
+        background-color: blue;
+        border: none;
+        color: white;
+      }
+      a{
+          text-decoration: none;
+          color: blue;
+          font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="whole">
+      <div id="logo">
+        <img src="https://masaischool.com/img/navbar/logo.svg" />
+      </div>
+      <div id="container">
+        <h2>SignUp</h2>
+        <div>
+            <form id="form">
+          <p>Phone No.</p>
+          <input
+          id="phone"
+            type="number"
+            placeholder="Enter your Phone no."
+            name="phone"
+          />
+          <p>Email</p>
+          <input id="email" type="text" placeholder="Enter email" name="email" />
+          <p>Password</p>
+          <input id="pass" type="password" placeholder="Enter password" name="password" />
+          <h5>
+            By signing up, I accept the Masai School
+            <a href="#">Terms of Service</a> and acknowledge the
+            <a href="#">Privacy Policy.</a>
+          </h5>
+          <div id="btn">
+            <input type="submit" id="button">
+        </div>
+        </form>     
+          <h3>Already have an account? <a href="signin.html">Sign In</a></h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  var form = document.querySelector("#form");
+  form.addEventListener("submit",onSignUp);
+  function onSignUp(){
+      event.preventDefault()
+      var data={
+          phone:form.phone.value,
+          email:form.email.value,
+          pass:form.pass.value,
+      }
+      localStorage.setItem("userData",JSON.stringify(data))
+    //   console.log(userData)
+     
+  }
+</script>

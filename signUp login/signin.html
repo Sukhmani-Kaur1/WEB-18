@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://kit.fontawesome.com/21c03ac54f.js" crossorigin="anonymous"></script>
+    <title>SignIn</title>
+    <style>
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 900px;
+      }
+      #logo {
+        text-align: center;
+        margin: 40px;
+      }
+      #logo img {
+        width: 190px;
+      }
+      #container {
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 15px;
+        width: 370px;
+        margin: auto;
+        padding: 40px;
+      }
+      #container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 30px;
+      }
+      #container > div {
+        width: 310px;
+        margin: auto;
+      }
+      #container > div p {
+        margin-top: 30px;
+        margin-bottom: 8px;
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(9, 26, 66);
+      }
+      #container > div input {
+        padding: 16px 35px;
+        font-size: 20px;
+        text-align: start;
+        border-radius: 10px;
+        color: grey;
+        border: 2px solid grey;
+      }
+      #container #btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #container h5 {
+        font-weight: 200;
+        color: grey;
+        text-align: center;
+        margin-top: 20px;
+      }
+      #container h3 {
+        text-align: center;
+        margin-top: 40px;
+        color: grey;
+        font-weight: 400;
+      }
+      #btn #button {
+        padding: 16px 110px;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-top: 30px;
+        background-color: blue;
+        border: none;
+        color: white;
+      }
+      button{
+          margin-top: 20px;
+        text-align: center;
+        border: 1px solid black;
+        color: black;
+        background-color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 20px;
+      }
+      #itag{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #itag img{
+          position: relative;
+          top: 4px;
+          right: 5px;
+      }
+      #forget{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          /* margin-top: 30px; */
+      }
+      #forget a{
+          margin-top: 22px;
+      }
+      a{
+          text-decoration: none;
+          color: blue;
+          font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="whole">
+      <div id="logo">
+        <img src="https://masaischool.com/img/navbar/logo.svg" />
+      </div>
+      <div id="container">
+        <h2>SignIn</h2>
+        <div>
+            <form id="form">
+          <p>Email</p>
+          <input id="email" type="text" placeholder="Enter email" name="email" />
+          <div id="forget">
+          <p>Password</p>
+          <a href="#">Forget Password</a>
+        </div>
+          <input id="pass" type="password" placeholder="Enter password" name="password" />
+          <div id="btn">
+            <input type="submit" id="button">
+        </div>
+        <div id="itag">
+        <button><img src="https://sso.masaischool.com/google.svg"> Countinue With Google</button>
+        </div>
+        </form>     
+          <h3>Don't have an account? <a href="signup.html">Sign Up</a></h3>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+    var userData = JSON.parse(localStorage.getItem("userData"));
+    var form = document.querySelector("#form");
+    form.addEventListener("submit",checkData)
+    function checkData(){
+        event.preventDefault();
+        var data={
+            email:form.email.value,
+            pass:form.pass.value,
+        }
+        if(userData===null){
+            alert("Create an account")
+        }else if(userData.email===data.email && userData.pass===data.pass){
+            alert("Login Successful")
+        }else if(userData.email!==data.email){
+            alert("User Does Not Exist")
+        }else if(userData.pass!==data.pass){
+            alert("Wrong Password")
+        }
+        
+    }
+</script>
